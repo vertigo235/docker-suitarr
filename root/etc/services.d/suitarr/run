@@ -11,7 +11,7 @@ if [[ $APP == "sonarr" ]]; then
 fi
 
 if [[ $APP == "jackett" ]]; then
-    exec s6-setuidgid hotio mono --debug /app/JackettConsole.exe --NoRestart --ListenPublic --Port 8080 --DataFolder /config $ARGS
+    exec s6-setuidgid hotio mono --debug /app/JackettConsole.exe --NoRestart --ListenPublic --Port 8080 $ARGS
 fi
 
 if [[ $APP == "nzbhydra" ]]; then

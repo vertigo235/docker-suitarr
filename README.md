@@ -4,6 +4,8 @@
 [![Docker Stars](https://img.shields.io/docker/stars/hotio/suitarr.svg?style=flat-square)](https://hub.docker.com/r/hotio/suitarr)
 [![Maintenance](https://img.shields.io/maintenance/yes/2017.svg?style=flat-square)](https://github.com/hotio/docker-suitarr)
 
+Donations: xrb_3e4t96mw66ny1hupoo3c47xgqqy13q7htdyk7x7gf7nrbj635sx8hf5awe3c
+
 ```
     _________      __  __
    /   _____/__ __|__|/  |______ ______________

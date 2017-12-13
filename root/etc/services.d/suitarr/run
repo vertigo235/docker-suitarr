@@ -11,13 +11,13 @@ if [[ $APP == "sonarr" ]]; then
 fi
 
 if [[ $APP == "jackett" ]]; then
-    exec s6-setuidgid hotio mono --debug /app/JackettConsole.exe --NoRestart --ListenPublic --Port 8080 $ARGS
+    exec s6-setuidgid hotio mono --debug /app/JackettConsole.exe --NoRestart --ListenPublic $ARGS
 fi
 
 if [[ $APP == "nzbhydra" ]]; then
-    exec s6-setuidgid hotio python /app/nzbhydra.py --nobrowser --port 8080 --config /config/nzbhydra.cfg --database /config/nzbhydra.db --logfile /config/nzbhydra.log $ARGS
+    exec s6-setuidgid hotio python /app/nzbhydra.py --nobrowser --config /config/nzbhydra.cfg --database /config/nzbhydra.db --logfile /config/nzbhydra.log $ARGS
 fi
 
 if [[ $APP == "nzbget" ]]; then
-    exec s6-setuidgid hotio /app/nzbget --server --option OutputMode=log --option ControlPort=8080 --configfile /config/nzbget.conf $ARGS
+    exec s6-setuidgid hotio /app/nzbget --server --option OutputMode=log --configfile /config/nzbget.conf $ARGS
 fi

@@ -4,6 +4,7 @@ MAINTAINER hotio
 ARG DEBIAN_FRONTEND=noninteractive
 ENV XDG_CONFIG_HOME="/config" XDG_DATA_HOME="/config"
 ENV LANG='C.UTF-8' LANGUAGE='C.UTF-8' LC_ALL='C.UTF-8'
+ENV PORT 8080
 
 # install packages
 RUN apt-get update && \
@@ -39,10 +40,10 @@ RUN apt-get update && \
 
 COPY root/ /
 
-EXPOSE 8080
+EXPOSE $PORT
 
 VOLUME ["/config"]
 
 ENTRYPOINT ["/init"]
 
-HEALTHCHECK --interval=200s --timeout=100s CMD curl --fail http://localhost:8080 || exit 1
+HEALTHCHECK --interval=200s --timeout=100s CMD curl --fail http://localhost:$PORT || exit 1

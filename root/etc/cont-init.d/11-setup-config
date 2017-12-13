@@ -4,20 +4,10 @@ source /etc/env
 
 if [[ $APP == "radarr" ]] || [[ $APP == "sonarr" ]]; then
     [[ -f /config/nzbdrone.pid ]] && rm /config/nzbdrone.pid
-
-    if [[ -f /config/config.xml ]]; then
-        sed -i 's/<Port>.*<\/Port>/<Port>8080<\/Port>/g' /config/config.xml
-    else
-        echo '<Config><Port>8080</Port></Config>' > /config/config.xml
-    fi
 fi
 
 if [[ $APP == "nzbhydra" ]]; then
     mkdir -p /config/backup && ln -s /config/backup /app/backup
-
-    if [[ -f /config/nzbhydra.cfg ]]; then
-        sed -i 's/"port": .*,/"port": 8080,/g' /config/nzbhydra.cfg
-    fi
 fi
 
 if [[ $APP == "nzbget" ]]; then

@@ -20,14 +20,15 @@ This requires a lot less building of the images and all you need to do if you wa
 
 ## Starting the container
 
-The environment variables `PUID`, `PGID`, `UMASK`, `VERSION` and `BACKUP` are all optional, the values you see below are the default values.
+The environment variables `PUID`, `PGID`, `UMASK`, `VERSION` and `BACKUP` are all optional, the values you see below are the default values. `APP` is required and can't be empty. `PORT` is recommended, if not configured, the container will expose port `8080`.
 
 #### Radarr
 
 ```
 docker run --rm \
            --name radarr \
-           -p 7878:8080 \
+           -p 7878:7878 \
+           -e PORT=7878 \
            -e APP=radarr \
            -e PUID=1000 \
            -e PGID=1000 \
@@ -44,7 +45,8 @@ docker run --rm \
 ```
 docker run --rm \
            --name sonarr \
-           -p 8989:8080 \
+           -p 8989:8989 \
+           -e PORT=8989 \
            -e APP=sonarr \
            -e PUID=1000 \
            -e PGID=1000 \
@@ -61,7 +63,8 @@ docker run --rm \
 ```
 docker run --rm \
            --name jackett \
-           -p 9117:8080 \
+           -p 9117:9117 \
+           -e PORT=9117 \
            -e APP=jackett \
            -e PUID=1000 \
            -e PGID=1000 \
@@ -78,7 +81,8 @@ docker run --rm \
 ```
 docker run --rm \
            --name nzbhydra \
-           -p 5075:8080 \
+           -p 5075:5075 \
+           -e PORT=5075 \
            -e APP=nzbhydra \
            -e PUID=1000 \
            -e PGID=1000 \
@@ -95,7 +99,8 @@ docker run --rm \
 ```
 docker run --rm \
            --name nzbget \
-           -p 6789:8080 \
+           -p 6789:6789 \
+           -e PORT=6789 \
            -e APP=nzbget \
            -e PUID=1000 \
            -e PGID=1000 \

@@ -13,7 +13,6 @@ echo "
 -----------------------------------------------
 GIVEN ENVIRONMENT
 -----------------------------------------------
-PORT           | $PORT
 APP            | $APP
 PUID           | $PUID
 PGID           | $PGID
@@ -29,7 +28,6 @@ source /etc/env
 echo "
 RUNNING ENVIRONMENT
 -----------------------------------------------
-PORT           | $PORT
 APP            | $APP
 PUID           | $PUID
 PGID           | $PGID

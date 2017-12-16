@@ -106,7 +106,6 @@ if [[ $APP == "rainode" ]]; then
         esac
         curl -s --fail -o - -L $url | unxz - > /app/rainode
     fi
-    chmod +x /app/rainode
 fi
 
 chown -R hotio:hotio /app

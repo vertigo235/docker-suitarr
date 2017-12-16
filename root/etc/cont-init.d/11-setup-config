@@ -23,11 +23,4 @@ if [[ $APP == "nzbget" ]]; then
     fi
 fi
 
-if [[ $APP == "rainode" ]]; then
-    if [[ ! -f /config/RaiBlocks/config.json ]]; then
-        exec s6-setuidgid hotio /app/rainode
-        sed -i "s/\"address\": \"::1\"/\"address\": \"::ffff:0.0.0.0\"/g" /config/RaiBlocks/config.json
-    fi
-fi
-
 chown -R hotio:hotio /config

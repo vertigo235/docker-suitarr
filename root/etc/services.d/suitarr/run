@@ -21,7 +21,3 @@ fi
 if [[ $APP == "nzbget" ]]; then
     exec s6-setuidgid hotio /app/nzbget --server --option OutputMode=log --configfile /config/nzbget.conf $ARGS
 fi
-
-if [[ $APP == "rainode" ]]; then
-    exec s6-setuidgid hotio /app/rainode $ARGS
-fi

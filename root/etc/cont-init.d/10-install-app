@@ -92,4 +92,20 @@ if [[ $APP == "nzbget" ]]; then
     fi
 fi
 
+if [[ $APP == "rainode" ]]; then
+    if [[ $VERSION == /* ]]; then
+        unxz $VERSION > /app/rainode
+    else
+        case $VERSION in
+            stable)     url=$(curl -s https://api.github.com/repos/clemahieu/raiblocks/releases/latest | jq -r .assets[3].browser_download_url)
+                        ;;
+            unstable)   url=$(curl -s https://api.github.com/repos/clemahieu/raiblocks/releases | jq -r .[0].assets[3].browser_download_url)
+                        ;;
+            *)          url=$(curl -s https://api.github.com/repos/clemahieu/raiblocks/releases/tags/V$VERSION | jq -r .assets[3].browser_download_url)
+                        ;;
+        esac
+        curl -s --fail -o - -L $url | unxz - > /app/rainode
+    fi
+fi
+
 chown -R hotio:hotio /app

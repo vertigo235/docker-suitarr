@@ -61,8 +61,6 @@ docker run --rm \
 #### Lidarr
 
 ```
-Currently only the unstable build works and is being updated.
-
 docker run --rm \
            --name lidarr \
            -p 8686:8686 \
@@ -70,7 +68,7 @@ docker run --rm \
            -e PUID=1000 \
            -e PGID=1000 \
            -e UMASK=022 \
-           -e VERSION=unstable \
+           -e VERSION=stable \
            -e BACKUP=yes \
            -v /etc/localtime:/etc/localtime:ro \
            -v /<local_path>/config:/config \

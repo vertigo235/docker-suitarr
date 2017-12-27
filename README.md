@@ -58,6 +58,22 @@ docker run --rm \
            hotio/suitarr
 ```
 
+#### Lidarr
+
+```
+docker run --rm \
+           --name lidarr \
+           -p 8989:8989 \
+           -e APP=lidarr \
+           -e PUID=1000 \
+           -e PGID=1000 \
+           -e UMASK=022 \
+           -e VERSION=stable \
+           -e BACKUP=yes \
+           -v /etc/localtime:/etc/localtime:ro \
+           -v /<local_path>/config:/config \
+           hotio/suitarr
+```
 #### Jackett
 
 ```

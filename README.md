@@ -1,8 +1,8 @@
-[![Docker Build Statu](https://img.shields.io/docker/build/hotio/suitarr.svg?style=flat-square)](https://hub.docker.com/r/hotio/suitarr)
-[![Docker Automated buil](https://img.shields.io/docker/automated/hotio/suitarr.svg?style=flat-square)](https://hub.docker.com/r/hotio/suitarr)
-[![Docker Pulls](https://img.shields.io/docker/pulls/hotio/suitarr.svg?style=flat-square)](https://hub.docker.com/r/hotio/suitarr)
-[![Docker Stars](https://img.shields.io/docker/stars/hotio/suitarr.svg?style=flat-square)](https://hub.docker.com/r/hotio/suitarr)
-[![Maintenance](https://img.shields.io/maintenance/yes/2017.svg?style=flat-square)](https://github.com/hotio/docker-suitarr)
+[![Docker Build Statu](https://img.shields.io/docker/build/vertigo235/suitarr.svg?style=flat-square)](https://hub.docker.com/r/vertigo235/suitarr)
+[![Docker Automated buil](https://img.shields.io/docker/automated/vertigo235/suitarr.svg?style=flat-square)](https://hub.docker.com/r/vertigo235/suitarr)
+[![Docker Pulls](https://img.shields.io/docker/pulls/vertigo235/suitarr.svg?style=flat-square)](https://hub.docker.com/r/vertigo235/suitarr)
+[![Docker Stars](https://img.shields.io/docker/stars/vertigo235/suitarr.svg?style=flat-square)](https://hub.docker.com/r/vertigo235/suitarr)
+[![Maintenance](https://img.shields.io/maintenance/yes/2017.svg?style=flat-square)](https://github.com/vertigo235/docker-suitarr)
 
 Donations: [xrb_3e4t96mw66ny1hupoo3c47xgqqy13q7htdyk7x7gf7nrbj635sx8hf5awe3c](https://raiblocks.net/account/index.php?acc=xrb_3e4t96mw66ny1hupoo3c47xgqqy13q7htdyk7x7gf7nrbj635sx8hf5awe3c)
 
@@ -38,7 +38,7 @@ docker run --rm \
            -e BACKUP=yes \
            -v /etc/localtime:/etc/localtime:ro \
            -v /<local_path>/config:/config \
-           hotio/suitarr
+           vertigo235/suitarr
 ```
 
 #### Sonarr
@@ -55,7 +55,23 @@ docker run --rm \
            -e BACKUP=yes \
            -v /etc/localtime:/etc/localtime:ro \
            -v /<local_path>/config:/config \
-           hotio/suitarr
+           vertigo235/suitarr
+```
+#### Lidarr
+
+```
+docker run --rm \
+           --name lidarr \
+           -p 8686:8686 \
+           -e APP=lidarr \
+           -e PUID=1000 \
+           -e PGID=1000 \
+           -e UMASK=022 \
+           -e VERSION=stable \
+           -e BACKUP=yes \
+           -v /etc/localtime:/etc/localtime:ro \
+           -v /<local_path>/config:/config \
+           vertigo235/suitarr:lidarr
 ```
 
 #### Jackett
@@ -72,7 +88,7 @@ docker run --rm \
            -e BACKUP=yes \
            -v /etc/localtime:/etc/localtime:ro \
            -v /<local_path>/config:/config \
-           hotio/suitarr
+           vertigo235/suitarr
 ```
 
 #### NZBHydra
@@ -89,7 +105,7 @@ docker run --rm \
            -e BACKUP=yes \
            -v /etc/localtime:/etc/localtime:ro \
            -v /<local_path>/config:/config \
-           hotio/suitarr
+           vertigo235/suitarr
 ```
 
 #### NZBGet
@@ -106,7 +122,7 @@ docker run --rm \
            -e BACKUP=yes \
            -v /etc/localtime:/etc/localtime:ro \
            -v /<local_path>/config:/config \
-           hotio/suitarr
+           vertigo235/suitarr
 ```
 
 ## Installing a different version

@@ -61,19 +61,22 @@ docker run --rm \
 #### Lidarr
 
 ```
+Currently only the unstable build works and is being updated.
+
 docker run --rm \
            --name lidarr \
-           -p 8989:8989 \
+           -p 8686:8686 \
            -e APP=lidarr \
            -e PUID=1000 \
            -e PGID=1000 \
            -e UMASK=022 \
-           -e VERSION=stable \
+           -e VERSION=unstable \
            -e BACKUP=yes \
            -v /etc/localtime:/etc/localtime:ro \
            -v /<local_path>/config:/config \
            hotio/suitarr
 ```
+
 #### Jackett
 
 ```

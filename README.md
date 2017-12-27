@@ -57,9 +57,12 @@ docker run --rm \
            -v /<local_path>/config:/config \
            vertigo235/suitarr
 ```
+
 #### Lidarr
 
 ```
+Currently only the unstable build works and is being updated.
+
 docker run --rm \
            --name lidarr \
            -p 8686:8686 \
@@ -67,11 +70,11 @@ docker run --rm \
            -e PUID=1000 \
            -e PGID=1000 \
            -e UMASK=022 \
-           -e VERSION=stable \
+           -e VERSION=unstable \
            -e BACKUP=yes \
            -v /etc/localtime:/etc/localtime:ro \
            -v /<local_path>/config:/config \
-           vertigo235/suitarr:lidarr
+           hotio/suitarr
 ```
 
 #### Jackett

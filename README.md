@@ -147,6 +147,14 @@ When given an absolute path like `/config/Radarr.develop.0.2.0.817.linux.tar.gz`
 -e VERSION=/config/NzbDrone.develop.tar.gz
 ```
 
+#### Lidarr
+
+```
+-e VERSION=unstable
+-e VERSION=2.0.0.212
+-e VERSION=/config/Lidarr.develop.0.2.0.212.linux.tar.gz
+```
+
 #### Jackett
 
 ```

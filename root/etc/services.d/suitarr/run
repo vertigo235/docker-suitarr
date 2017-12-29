@@ -10,6 +10,10 @@ if [[ $APP == "sonarr" ]]; then
     exec s6-setuidgid hotio mono --debug /app/NzbDrone.exe --nobrowser --data=/config $ARGS
 fi
 
+if [[ $APP == "lidarr" ]]; then
+    exec s6-setuidgid hotio mono --debug /app/Lidarr.exe --nobrowser --data=/config $ARGS
+fi
+
 if [[ $APP == "jackett" ]]; then
     exec s6-setuidgid hotio mono --debug /app/JackettConsole.exe --NoRestart --ListenPublic $ARGS
 fi

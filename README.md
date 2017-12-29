@@ -58,6 +58,23 @@ docker run --rm \
            hotio/suitarr
 ```
 
+#### Lidarr
+
+```
+docker run --rm \
+           --name lidarr \
+           -p 8686:8686 \
+           -e APP=lidarr \
+           -e PUID=1000 \
+           -e PGID=1000 \
+           -e UMASK=022 \
+           -e VERSION=stable \
+           -e BACKUP=yes \
+           -v /etc/localtime:/etc/localtime:ro \
+           -v /<local_path>/config:/config \
+           hotio/suitarr
+```
+
 #### Jackett
 
 ```
@@ -129,6 +146,14 @@ When given an absolute path like `/config/Radarr.develop.0.2.0.817.linux.tar.gz`
 -e VERSION=unstable
 -e VERSION=2.0.0.4578
 -e VERSION=/config/NzbDrone.develop.tar.gz
+```
+
+#### Lidarr
+
+```
+-e VERSION=unstable
+-e VERSION=2.0.0.212
+-e VERSION=/config/Lidarr.develop.0.2.0.212.linux.tar.gz
 ```
 
 #### Jackett

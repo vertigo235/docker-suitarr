@@ -2,7 +2,7 @@
 
 source /etc/env
 
-if [[ $APP == "radarr" ]] || [[ $APP == "sonarr" ]] || [[ $APP == "lidarr" ]] ; then
+if [[ $APP == "radarr" ]] || [[ $APP == "sonarr" ]] || [[ $APP == "lidarr" ]] || [[ $APP == "phantom" ]]; then
     [[ -f /config/nzbdrone.pid ]] && rm /config/nzbdrone.pid
 fi
 

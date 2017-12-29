@@ -46,6 +46,29 @@ if [[ $APP == "lidarr" ]]; then
     fi
 fi
 
+if [[ $APP == "phantom" ]]; then
+    if [[ $VERSION == /* ]]; then
+        tar xzf $VERSION -C /app --strip-components=1
+    else
+        case $VERSION in
+            stable)     jobid=$(curl -s https://ci.appveyor.com/api/projects/veritgo235/sonarr/branch/phantom | jq -r '.build.jobs[0].jobId')
+                        filename=$(curl -s https://ci.appveyor.com/api/buildjobs/${jobid}/artifacts | jq -r '.[].fileName' | grep -o ".*Sonarr.*.linux.tar.gz")
+                        url=https://ci.appveyor.com/api/buildjobs/${jobid}/artifacts/${filename}
+                        ;;
+            unstable)   jobid=$(curl -s https://ci.appveyor.com/api/projects/veritgo235/sonarr/branch/phantom | jq -r '.build.jobs[0].jobId')
+                        filename=$(curl -s https://ci.appveyor.com/api/buildjobs/${jobid}/artifacts | jq -r '.[].fileName' | grep -o ".*Sonarr.*.linux.tar.gz")
+                        url=https://ci.appveyor.com/api/buildjobs/${jobid}/artifacts/${filename}
+                        ;;
+            *)          jobid=$(curl -s https://ci.appveyor.com/api/projects/vertigo235/sonarr/build/${VERSION} | jq -r '.build.jobs[0].jobId')
+                        filename=$(curl -s https://ci.appveyor.com/api/buildjobs/${jobid}/artifacts | jq -r '.[].fileName' | grep -o ".*Sonarr.*.linux.tar.gz")
+                        url=https://ci.appveyor.com/api/buildjobs/${jobid}/artifacts/${filename}
+                        ;;
+        esac
+        curl -s --fail -o /tmp/app.tar.gz -L $url && tar xzf /tmp/app.tar.gz -C /app --strip-components=1 && rm /tmp/app.tar.gz
+    fi
+fi
+
+
 if [[ $APP == "sonarr" ]]; then
     if [[ $VERSION == /* ]]; then
         tar xzf $VERSION -C /app --strip-components=1

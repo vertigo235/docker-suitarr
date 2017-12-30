@@ -10,7 +10,7 @@ if [[ $BACKUP == "yes" ]]; then
     fi
 
     if [[ $APP == "lidarr" ]]; then
-        tar -czf /config/backups-suitarr/lidarr_backup_$(date +%Y.%m.%d_%H.%M.%S).tar.gz -C /config nzbdrone.db config.xml
+        tar -czf /config/backups-suitarr/lidarr_backup_$(date +%Y.%m.%d_%H.%M.%S).tar.gz -C /config lidarr.db config.xml
     fi
 
     if [[ $APP == "sonarr" ]]; then

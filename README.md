@@ -109,6 +109,23 @@ docker run --rm \
            hotio/suitarr
 ```
 
+#### NZBHydra2
+
+```
+docker run --rm \
+           --name nzbhydra2 \
+           -p 5076:5076 \
+           -e APP=nzbhydra2 \
+           -e PUID=1000 \
+           -e PGID=1000 \
+           -e UMASK=022 \
+           -e VERSION=stable \
+           -e BACKUP=yes \
+           -v /etc/localtime:/etc/localtime:ro \
+           -v /<local_path>/config:/config \
+           hotio/suitarr
+```
+
 #### NZBGet
 
 ```
@@ -170,6 +187,14 @@ When given an absolute path like `/config/Radarr.develop.0.2.0.817.linux.tar.gz`
 -e VERSION=unstable
 -e VERSION=f60a628cc5d2a17677e6c9b6bb12ad41063ea4e0
 -e VERSION=/config/0.2.226.tar.gz
+```
+
+#### NZBHydra2
+
+```
+-e VERSION=unstable
+-e VERSION=1.1.0
+-e VERSION=/config/nzbhydra2-1.1.0-linux.zip
 ```
 
 #### NZBGet

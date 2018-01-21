@@ -98,6 +98,22 @@ if [[ $APP == "nzbhydra" ]]; then
     fi
 fi
 
+if [[ $APP == "nzbhydra2" ]]; then
+    if [[ $VERSION == /* ]]; then
+        unzip $VERSION -d /app
+    else
+        case $VERSION in
+            stable)     url=$(curl -s https://api.github.com/repos/theotherp/nzbhydra2/releases/latest | jq -r .assets[0].browser_download_url)
+                        ;;
+            unstable)   url=$(curl -s https://api.github.com/repos/theotherp/nzbhydra2/releases | jq -r .[0].assets[0].browser_download_url)
+                        ;;
+            *)          url=$(curl -s https://api.github.com/repos/theotherp/nzbhydra2/releases/tags/v$VERSION | jq -r .assets[0].browser_download_url)
+                        ;;
+        esac
+        curl -s --fail -o /tmp/app.zip -L $url && unzip /tmp/app.zip -d /app && rm /tmp/app.zip
+    fi
+fi
+
 if [[ $APP == "nzbget" ]]; then
     if [[ $VERSION == /* ]]; then
         sh $VERSION --destdir /app

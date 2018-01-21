@@ -111,6 +111,7 @@ if [[ $APP == "nzbhydra2" ]]; then
                         ;;
         esac
         curl -s --fail -o /tmp/app.zip -L $url && unzip /tmp/app.zip -d /app && rm /tmp/app.zip
+        chmod +x /app/nzbhydra2
     fi
 fi
 

@@ -20,6 +20,7 @@ RUN apt-get update && \
         mono-devel \
         sqlite3 \
         python \
+        openjdk-8-jre-headless \
         mediainfo && \
 
 # install s6-overlay

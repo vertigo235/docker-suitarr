@@ -1,4 +1,4 @@
-FROM ubuntu:17.04
+FROM ubuntu:17.10
 MAINTAINER hotio
 
 ARG DEBIAN_FRONTEND=noninteractive
@@ -14,12 +14,14 @@ RUN apt-get update && \
     apt-get update && \
     apt-get install -y --no-install-recommends --no-install-suggests \
         jq \
+        unzip \
         curl \
         libcurl4-openssl-dev \
         ca-certificates-mono \
         mono-devel \
         sqlite3 \
         python \
+        openjdk-8-jre-headless \
         mediainfo && \
 
 # install s6-overlay

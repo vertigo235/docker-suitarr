@@ -26,6 +26,10 @@ if [[ $APP == "nzbhydra" ]]; then
     exec s6-setuidgid hotio python /app/nzbhydra.py --nobrowser --config /config/nzbhydra.cfg --database /config/nzbhydra.db --logfile /config/nzbhydra.log $ARGS
 fi
 
+if [[ $APP == "nzbhydra2" ]]; then
+    exec s6-setuidgid hotio /app/nzbhydra2 --nobrowser --datafolder /config $ARGS
+fi
+
 if [[ $APP == "nzbget" ]]; then
     exec s6-setuidgid hotio /app/nzbget --server --option OutputMode=log --configfile /config/nzbget.conf $ARGS
 fi

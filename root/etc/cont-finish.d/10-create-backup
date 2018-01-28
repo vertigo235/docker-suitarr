@@ -10,7 +10,7 @@ if [[ $BACKUP == "yes" ]]; then
     fi
 
     if [[ $APP == "lidarr" ]]; then
-        tar -czf /config/backups-suitarr/lidarr_backup_$(date +%Y.%m.%d_%H.%M.%S).tar.gz -C /config nzbdrone.db config.xml
+        tar -czf /config/backups-suitarr/lidarr_backup_$(date +%Y.%m.%d_%H.%M.%S).tar.gz -C /config lidarr.db config.xml
     fi
 
     if [[ $APP == "sonarr" ]]; then
@@ -27,6 +27,10 @@ if [[ $BACKUP == "yes" ]]; then
 
     if [[ $APP == "nzbhydra" ]]; then
         tar -czf /config/backups-suitarr/nzbhydra_backup_$(date +%Y.%m.%d_%H.%M.%S).tar.gz -C /config nzbhydra.cfg nzbhydra.db
+    fi
+
+    if [[ $APP == "nzbhydra2" ]]; then
+        tar -czf /config/backups-suitarr/nzbhydra2_backup_$(date +%Y.%m.%d_%H.%M.%S).tar.gz -C /config nzbhydra.yml database
     fi
 
     if [[ $APP == "nzbget" ]]; then

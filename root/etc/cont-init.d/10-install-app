@@ -9,7 +9,7 @@ if [[ $APP == "radarr" ]]; then
         tar xzf $VERSION -C /app --strip-components=1
     else
         case $VERSION in
-            stable)     url=$(curl -s https://api.github.com/repos/radarr/radarr/releases | jq -r .[0].assets[1].browser_download_url)
+            stable)     url=$(curl -s https://api.github.com/repos/radarr/radarr/releases | jq -r .[0].assets[].browser_download_url | grep -o ".*Radarr.*.linux.tar.gz")
                         ;;
             unstable)   jobid=$(curl -s https://ci.appveyor.com/api/projects/galli-leo/radarr-usby1/branch/develop | jq -r '.build.jobs[0].jobId')
                         filename=$(curl -s https://ci.appveyor.com/api/buildjobs/${jobid}/artifacts | jq -r '.[].fileName' | grep -o ".*Radarr.*.linux.tar.gz")
@@ -29,7 +29,8 @@ if [[ $APP == "lidarr" ]]; then
         tar xzf $VERSION -C /app --strip-components=1
     else
         case $VERSION in
-            stable)     jobid=$(curl -s https://ci.appveyor.com/api/projects/lidarr/lidarr/branch/master | jq -r '.build.jobs[0].jobId')
+            stable)     jobid=$(curl -s https://ci.appveyor.com/api/projects/lidarr/lidarr/branch/develop | jq -r '.build.jobs[0].jobId')
+                        #jobid=$(curl -s https://ci.appveyor.com/api/projects/lidarr/lidarr/branch/master | jq -r '.build.jobs[0].jobId')
                         filename=$(curl -s https://ci.appveyor.com/api/buildjobs/${jobid}/artifacts | jq -r '.[].fileName' | grep -o ".*Lidarr.*.linux.tar.gz")
                         url=https://ci.appveyor.com/api/buildjobs/${jobid}/artifacts/${filename}
                         ;;
@@ -71,11 +72,11 @@ if [[ $APP == "jackett" ]]; then
         tar xzf $VERSION -C /app --strip-components=1
     else
         case $VERSION in
-            stable)     url=$(curl -s https://api.github.com/repos/jackett/jackett/releases/latest | jq -r .assets[0].browser_download_url)
+            stable)     url=$(curl -s https://api.github.com/repos/jackett/jackett/releases/latest | jq -r .assets[].browser_download_url | grep -o ".*Jackett.Binaries.Mono.tar.gz")
                         ;;
-            unstable)   url=$(curl -s https://api.github.com/repos/jackett/jackett/releases | jq -r .[0].assets[0].browser_download_url)
+            unstable)   url=$(curl -s https://api.github.com/repos/jackett/jackett/releases | jq -r .[0].assets[].browser_download_url | grep -o ".*Jackett.Binaries.Mono.tar.gz")
                         ;;
-            *)          url=$(curl -s https://api.github.com/repos/jackett/jackett/releases/tags/v$VERSION | jq -r .assets[0].browser_download_url)
+            *)          url=$(curl -s https://api.github.com/repos/jackett/jackett/releases/tags/v$VERSION | jq -r .assets[].browser_download_url | grep -o ".*Jackett.Binaries.Mono.tar.gz")
                         ;;
         esac
         curl -s --fail -o /tmp/app.tar.gz -L $url && tar xzf /tmp/app.tar.gz -C /app --strip-components=1 && rm /tmp/app.tar.gz
@@ -103,11 +104,11 @@ if [[ $APP == "nzbhydra2" ]]; then
         unzip $VERSION -d /app
     else
         case $VERSION in
-            stable)     url=$(curl -s https://api.github.com/repos/theotherp/nzbhydra2/releases/latest | jq -r .assets[0].browser_download_url)
+            stable)     url=$(curl -s https://api.github.com/repos/theotherp/nzbhydra2/releases/latest | jq -r .assets[].browser_download_url | grep -o ".*nzbhydra2-.*-linux.zip")
                         ;;
-            unstable)   url=$(curl -s https://api.github.com/repos/theotherp/nzbhydra2/releases | jq -r .[0].assets[0].browser_download_url)
+            unstable)   url=$(curl -s https://api.github.com/repos/theotherp/nzbhydra2/releases | jq -r .[0].assets[].browser_download_url | grep -o ".*nzbhydra2-.*-linux.zip")
                         ;;
-            *)          url=$(curl -s https://api.github.com/repos/theotherp/nzbhydra2/releases/tags/v$VERSION | jq -r .assets[0].browser_download_url)
+            *)          url=$(curl -s https://api.github.com/repos/theotherp/nzbhydra2/releases/tags/v$VERSION | jq -r .assets[].browser_download_url | grep -o ".*nzbhydra2-.*-linux.zip")
                         ;;
         esac
         curl -s --fail -o /tmp/app.zip -L $url && unzip /tmp/app.zip -d /app && rm /tmp/app.zip
@@ -120,11 +121,11 @@ if [[ $APP == "nzbget" ]]; then
         sh $VERSION --destdir /app
     else
         case $VERSION in
-            stable)     url=$(curl -s https://api.github.com/repos/nzbget/nzbget/releases/latest | jq -r .assets[3].browser_download_url)
+            stable)     url=$(curl -s https://api.github.com/repos/nzbget/nzbget/releases/latest | jq -r .assets[].browser_download_url | grep -o ".*nzbget-.*-bin-linux.run")
                         ;;
-            unstable)   url=$(curl -s https://api.github.com/repos/nzbget/nzbget/releases | jq -r .[0].assets[3].browser_download_url)
+            unstable)   url=$(curl -s https://api.github.com/repos/nzbget/nzbget/releases | jq -r .[0].assets[].browser_download_url | grep -o ".*nzbget-.*-bin-linux.run")
                         ;;
-            *)          url=$(curl -s https://api.github.com/repos/nzbget/nzbget/releases/tags/v$VERSION | jq -r .assets[3].browser_download_url)
+            *)          url=$(curl -s https://api.github.com/repos/nzbget/nzbget/releases/tags/v$VERSION | jq -r .assets[].browser_download_url | grep -o ".*nzbget-.*-bin-linux.run")
                         ;;
         esac
         curl -s --fail -o /tmp/app.run -L $url && sh /tmp/app.run --destdir /app && rm /tmp/app.run
